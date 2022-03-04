@@ -71,7 +71,7 @@ function App() {
     setTimeout(() => {
       setAlert(false)
     }, 2500)
-  },[groceryItems])
+  },[])
 
   useEffect(() => {
     if (window.localStorage.length === 0) {
