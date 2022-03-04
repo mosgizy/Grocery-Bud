@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  display: flex;
+  justify-content: center;
+  background-color: #f1f5f8;
+}
+
+.w{
+  width: 90vw;
+  /* max-width: 35rem; */
+}
