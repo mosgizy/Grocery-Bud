@@ -2,7 +2,7 @@ import './App.css';
 import Grocery from './Grocery';
 import ClearBtn from './clearBtn';
 import Message from './Message';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 
 function App() {
   const [groceryItems, setGroceryItems] = useState([])
@@ -12,6 +12,8 @@ function App() {
   const [showClear, setShowClear] = useState(false)
   const [btn, setBtn] = useState("submit")
   const [edited, setEdited] = useState()
+
+  const focusInput = useRef(null)
   
   const handleInput = (e) => {
     setItem(e.target.value)
@@ -71,6 +73,8 @@ function App() {
     setTimeout(() => {
       setAlert(false)
     }, 2500)
+
+    focusInput.current.focus()
   })
 
   useEffect(() => {
@@ -88,7 +92,7 @@ function App() {
       <header className="header">
         <h1 className='text-3xl font-bold tracking-wider capitalize text-center'>grocery bud</h1>
         <form className='flex gap-1 mt-4 justify-center'>
-          <input type="text" value={item} placeholder='e.g eggs' className='bg-gray-100 px-4 rounded-md  py-1 w-full' onChange={handleInput} />
+          <input type="text" value={item} ref={focusInput} placeholder='e.g eggs' className='bg-gray-100 px-4 rounded-md  py-1 w-full' onChange={handleInput} />
           <button type='submit' className='rounded-md bg-cyan-200 px-5 capitalize tracking-wider transition delay-300 ease-in-out hover:bg-cyan-500 hover:text-white' onClick={handleSubmit}>{btn}</button>
         </form>
       </header>
